@@ -1,0 +1,7 @@
+Package Dependency:
+jieba
+wordCloud
+scrapy
+pymongo
+scipy
+numpy
