@@ -23,6 +23,7 @@ jd = JediEscapeProPipeline()
 comments = list()
 users = list()
 
+
 def get_comments():
     for comment in jd.conn.find():
         try:
@@ -33,6 +34,7 @@ def get_comments():
         except KeyError:
             print comment['cmt_id']
             continue
+
 
 def get_users():
     for user in jd.conn_user.find():

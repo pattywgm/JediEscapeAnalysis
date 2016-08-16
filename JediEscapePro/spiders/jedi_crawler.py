@@ -81,7 +81,7 @@ class JediCrawler(Spider):
     def parse(self, response):
         # parse the html and get item field
         self.log('A response from %s just arrived!' % response.url)
-        users = list()
+        # users = list()
         for comment in response.xpath("//div[@class='comment-item']"):
             item = JediEscapeProItem()
             item['cmt_id'] = comment.xpath("./@data-cid").extract()[0]
@@ -97,11 +97,11 @@ class JediCrawler(Spider):
             else:
                 item['cmt_star'] = star_map.get(stars[0])
             item['cmt_user'] = comment.xpath(".//span[@class='comment-info']/a/@href").extract()[0]
-            users.append(item['cmt_user'])
+            # users.append(item['cmt_user'])
             yield item
 
-        for user_url in users:
-            yield Request(user_url, headers=self.headers, callback=self.get_user_infos)
+        # for user_url in users:
+        #     yield Request(user_url, headers=self.headers, callback=self.get_user_infos)
 
         self.log("Get next page...")
         for url in response.xpath("//a[@class='next']/@href").extract():
